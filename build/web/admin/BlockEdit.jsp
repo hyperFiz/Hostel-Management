@@ -13,6 +13,18 @@
         <title>Edit Block</title>
     </head>
     <body>
+        <div class="page">
+  <span class="menu_toggle">
+    <i class="menu_open fa fa-bars fa-lg"></i>
+    <i class="menu_close fa fa-times fa-lg"></i>
+  </span>
+  <ul class="menu_items">
+    <li><a href="../Logout"><i class="icon fa fa-power-off fa-2x"></i>Logout</a></li>
+    <li><a href="BlockList"><i class="icon fa fa-list-alt fa-2x"></i>Colleges, Block <br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp& Rooms List</a></li>
+  </ul>
+  <main class="content">
+    <div class="content_inner">
+        
         <%
         String UserSession = (String)session.getAttribute("userID");
         if(UserSession==null)
@@ -50,7 +62,8 @@
                 </select>
             </div>
             </c:forEach>
-            <button type="submit">Edit</button>
+            <button class="btn btn-success" type="submit">Edit</button>
+            <a href="BlockList"><button class="btn btn-danger">Cancel</button></a>
         </form>
     </body>
 </html>

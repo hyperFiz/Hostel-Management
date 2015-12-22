@@ -23,8 +23,16 @@
 
 %>
     <body>
-        <%@include file="StuHeader.jsp" %>
-        <br><br><br><br><br>
+        <div class="page">
+            <span class="menu_toggle">
+              <i class="menu_open fa fa-bars fa-lg"></i>
+              <i class="menu_close fa fa-times fa-lg"></i>
+            </span>
+            <ul class="menu_items">
+              <li><a href="Logout"><i class="icon fa fa-sign-out fa-2x"></i>Logout</a></li>
+            </ul>
+                <main class="content">
+                  <div class="content_inner">
         <h1>Student home</h1>
 
         <c:forEach items="${stdHomeList}" var="student" varStatus="loop">
@@ -69,9 +77,9 @@
                             <div class="row">
                                 <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
                                 <br><br><br>
-                                    <div class="panel panel-info">
-                                        <div class="panel-heading">
-                                          <h3 class="panel-title">Room Details</h3>
+                                    <div  class="panel panel-info">
+                                        <div  style="background-color: #F37272;"class="panel-heading">
+                                          <h3 style="color: #FFFFFF;" class="panel-title">Room Details</h3>
                                         </div>
                                         <div class="panel-body">
                                           <div class="row">
@@ -162,5 +170,8 @@
                 </c:otherwise>
             </c:choose>
         </c:forEach>
+                   </div>
+            </main>
+    </div>
     </body>
 </html>

@@ -20,38 +20,35 @@ and open the template in the editor.
     <!-- Custom Fonts -->
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     </head>
-    <body style="background-image: ">
-        <div class="bg-login">
-        <div class="content">
-            <div class="row">
-              <h1 class="text-center">Login</h1>
-                <form class="form-horizontal" role="form" method="post" action="./LoginVerification">
-                  <div class="form-group">
-                    <label for="inputEmail3" class="col-sm-3 control-label">
-                      UserName</label>
-                    <div class="col-sm-9">
-                      <input type="text" name="username" class="form-control" id="inputUser" placeholder="UserName" required>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label for="inputPassword3" class="col-sm-3 control-label">
-                      Password</label>
-                    <div class="col-sm-9">
-                      <input type="password" name="password" class="form-control" id="inputPsw" placeholder="Password" required>
-                    </div>
-                  </div>
-                  <div class="form-group last">
-                    <div class="col-sm-offset-3 col-sm-10">
-                      <button type="submit" class="btn btn-success btn-lg">
-                        Sign in</button>
-                      <button type="reset" class="btn btn-default btn-lg">
-                        Reset</button>
-                    </div>
-                  </div>
-                </form>
+    <body >
+       
+            <h1 style="color: white">Hostel Management</h1>
+            <h1 >Login</h1>
+            <form role="form" method="post" action="./LoginVerification">
+              <div >
+                <input type="text" name="username" id="Username" required="required"/>
+                <label for="Username">Username</label>
+                <div></div>
+              </div>
+              <div >
+                <input type="password" name="password" id="Password" required="required"/>
+                <label for="Password">Password</label>
+                <div></div>
+              </div>
+              <div class="button-container">
+                <button><span>Go</span></button>
+              </div>
+            </form>
+          <div class="card alt">
+            <div class="toggle"></div>
+            <h1 class="title">How to Login?</h1>
+            <div class="input-container">
+                <h4>Username: your Acid ID</h4><br>
+                <h4>Password: your matric card no.</h4>
             </div>
+           
           </div>
-          <div class="bg-boxes">
+             <div class="bg-boxes">
                         <svg width="300px" height="100%" id="col1">
               <rect width="150px" height="150px" x="75px" y="75px" class="bubble" id="bub1" />
             </svg>
@@ -67,7 +64,6 @@ and open the template in the editor.
             <svg width="240px" height="100%" id="col5">
                 <rect width="120px" height="120px" x="60px" y="60px" class="bubble" id="bub5" />
             </svg>
-            <!--Here is a triangle-->
             <svg width="200px" height="100%" id="col6">
                 <polygon points="50,150 100,50 150,150" class="bubble" id="bub6" />
             </svg>
@@ -87,6 +83,7 @@ and open the template in the editor.
                 <rect width="50px" height="50px" x="25px" y="25px" class="bubble" id="bub11" />
             </svg>
           </div>
-        </div>
+            
+        
     </body>
 </html>

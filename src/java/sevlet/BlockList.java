@@ -59,10 +59,20 @@ public class BlockList extends HttpServlet {
                     
                     request.setAttribute("blockList", blockList);
                     
-                    RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/admin/Block.jsp");
-                    dispatcher.forward(request, response);
+                    
+                }
+                
+                if(db.query("SELECT COUNT(roomID) from room;")){
+                    request.setAttribute("roomCount", db.getDataAt(0, "count(roomID)"));
+                }
+                
+                if(db.query("SELECT COUNT(roomID) from room WHERE studentID > 0;")){
+                    request.setAttribute("roomStudentCount", db.getDataAt(0, "count(roomID)"));
                 }
                
+                RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/admin/Block.jsp");
+                    dispatcher.forward(request, response);
+                
            }else{
                response.sendRedirect("../index.jsp");
            }

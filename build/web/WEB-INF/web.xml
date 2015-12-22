@@ -32,6 +32,10 @@
         <servlet-name>RoomDelete</servlet-name>
         <servlet-class>sevlet.RoomDelete</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>NotApprove</servlet-name>
+        <servlet-class>sevlet.NotApprove</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>StudentHome</servlet-name>
         <url-pattern>/studentHome</url-pattern>
@@ -66,6 +70,10 @@
         <servlet-name>RoomDelete</servlet-name>
         <url-pattern>/RoomDelete</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>NotApprove</servlet-name>
+        <url-pattern>/NotApprove</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
@@ -85,6 +93,7 @@
             <url-pattern>/student/*</url-pattern>
             <url-pattern>/index.html</url-pattern>
             <include-prelude>/MainHead.jsp</include-prelude>
+            <include-coda>/MainFooter.jsp</include-coda>
         </jsp-property-group>
     </jsp-config>
 </web-app>

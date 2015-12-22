@@ -11,9 +11,32 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>CREATE BLOCK</title>
+         <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+      <!-- Bootstrap Core CSS -->
+        <link href="css/bootstrap.css" rel="stylesheet">
+
+        <!-- Custom CSS -->
+        <link href="css/style3.css" rel="stylesheet">
+
+        <!-- Custom Fonts -->
+        <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
     </head>
     <body>
+         <div class="page">
+  <span class="menu_toggle">
+    <i class="menu_open fa fa-bars fa-lg"></i>
+    <i class="menu_close fa fa-times fa-lg"></i>
+  </span>
+  <ul class="menu_items">
+    <li><a href="Logout"><i class="icon fa fa-power-off fa-2x"></i>Logout</a></li>
+    <li><a href="admin/block.jsp"><i class="icon fa fa-list-alt fa-2x"></i>Colleges, Block <br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp& Rooms List</a></li>
+  </ul>
+  <main class="content">
+    <div class="content_inner">
         <form method="get" action="../addBlock">
             College Name : 
             <select name="kolejID">
@@ -39,8 +62,12 @@
             <input type="text" placeholder="Enter Block Name" name="blockName">
             <br><br>
             
-            <input type="submit" value="creat Block">
+            <input class="btn btn-success" type="submit" value="creat Block">
         </form>
-            <button><a href="admin/block.jsp">Cancel</a></button>
+                <a href="BlockList"><button class="btn btn-danger">Cancel</button></a>
     </body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+<!--    <script src="js/bootstrap.min.js"></script>
+    <script src="js/javascript2.js"></script> -->
 </html>

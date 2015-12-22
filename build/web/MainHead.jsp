@@ -6,7 +6,10 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
-    <link href="css/bootstrap-theme.css" rel="stylesheet">
-    <link href="css/bootstrap.css" rel="stylesheet">
-    <link href="fonts/glyphicons-halflings-regular.svg" rel="stylesheet">
-    <script src="js/jquery-1.11.3.min.js" type="text/javascript"></script>
+    <link href="/HostelManagement/css/bootstrap-theme.css" rel="stylesheet">
+    <link href="/HostelManagement/css/bootstrap.css" rel="stylesheet">
+    <link href="/HostelManagement/fonts/glyphicons-halflings-regular.svg" rel="stylesheet">
+    <script src="/HostelManagement/js/jquery-1.11.3.min.js" type="text/javascript"></script>
+    <link href="/HostelManagement/css/style3.css" rel="stylesheet" type="text/css"/>
+    <link href="/HostelManagement/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
