@@ -22,10 +22,10 @@
     %>
     <body>
         <h1>BLOCK / COLLEGE</h1> 
-        <button><a href="AdminHome.jsp">Back</a></button>
-        <button><a href="admin/createCollege.jsp"><h3>create new College</h3></a></button>
-        <button><a href="createBlock"><h3>create new block</h3></a></button>
-        <button><a href="admin/createRoom.jsp"><h3>insert room</h3></a></button>
+        <a href="AdminHome.jsp"><button>Back</button></a>
+        <a href="admin/createCollege.jsp"><button><h3>create new College</h3></button></a>
+        <a href="createBlock"><button><h3>create new block</h3></button></a>
+        <a href="admin/createRoom.jsp"><button><h3>insert room</h3></button></a>
         
             <br><br>
             <h3>List of Rooms</h3>
@@ -37,6 +37,7 @@
                 <td>Room Number</td>
                 <td>student</td>
                 <td>Room Type</td>
+                <td>Room Status</td>
                 <td colspan="3">Option</td>
             </tr>
             <c:forEach items="${blockList}" var="block" varStatus="loop">
@@ -68,9 +69,45 @@
                             </c:otherwise>    
                         </c:choose>
                     </td>
-                    <td><button>Edit</button></td>
-                    <td><button>Delete</button></td>
-                    <td><button>Disable</button></td>
+                    <td>
+                        <c:choose>
+                            <c:when test="${block.roomStatus==1}">
+                                Enabled
+                            </c:when>
+                            <c:otherwise>
+                                Disabled
+                            </c:otherwise>
+                        </c:choose>
+                    </td>
+                    <td>
+                        <form action="BlockEdit">
+                            <input type="hidden" name="blockID" value="<c:out value="${block.blockID}"/>">
+                            <input type="hidden" name="roomID" value="<c:out value="${block.roomID}"/>">
+                            <button type="submit">Edit</button>
+                        </form>
+                    </td>
+                    <td>
+                        <form action="RoomDelete">
+                            <input type="hidden" name="roomID" value="<c:out value="${block.roomID}"/>">
+                            <button>Delete</button>
+                        </form>
+                    </td>
+                    <td>
+                        <c:choose>
+                            <c:when test="${block.roomStatus==1}">
+                                <form action="RoomDisable/disable">
+                                    <input type="hidden" name="roomID" value="<c:out value="${block.roomID}"/>">
+                                    <button>Disable</button>
+                                </form>
+                            </c:when>
+                            <c:otherwise>
+                                <form action="RoomDisable/enable">
+                                    <input type="hidden" name="roomID" value="<c:out value="${block.roomID}"/>">
+                                    <button>Enable</button>
+                                </form>    
+                            </c:otherwise>
+                        </c:choose>
+                    </td>
                 </tr>
             </c:forEach>
             

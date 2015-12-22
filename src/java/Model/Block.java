@@ -13,6 +13,7 @@ public class Block {
     
     private String blockName;
     private String kolejName;
+    private int roomStatus;
     private int roomID;
     private int roomNo;
     private int roomType;
@@ -130,6 +131,20 @@ public class Block {
      */
     public void setKolejID(int kolejID) {
         this.kolejID = kolejID;
+    }
+
+    /**
+     * @return the roomStatus
+     */
+    public int getRoomStatus() {
+        return roomStatus;
+    }
+
+    /**
+     * @param roomStatus the roomStatus to set
+     */
+    public void setRoomStatus(int roomStatus) {
+        this.roomStatus = roomStatus;
     }
     
 }

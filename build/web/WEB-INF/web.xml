@@ -20,6 +20,18 @@
         <servlet-name>StudentHome</servlet-name>
         <servlet-class>sevlet.stdHomeSvlt</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>BlockEdit</servlet-name>
+        <servlet-class>sevlet.BlockEdit</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>RoomDisable</servlet-name>
+        <servlet-class>sevlet.RoomDisable</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>RoomDelete</servlet-name>
+        <servlet-class>sevlet.RoomDelete</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>StudentHome</servlet-name>
         <url-pattern>/studentHome</url-pattern>
@@ -39,6 +51,20 @@
     <servlet-mapping>
         <servlet-name>BlockList</servlet-name>
         <url-pattern>/BlockList</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>BlockEdit</servlet-name>
+        <url-pattern>/BlockEdit/edit</url-pattern>
+        <url-pattern>/BlockEdit</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RoomDisable</servlet-name>
+        <url-pattern>/RoomDisable/disable</url-pattern>
+        <url-pattern>/RoomDisable/enable</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RoomDelete</servlet-name>
+        <url-pattern>/RoomDelete</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

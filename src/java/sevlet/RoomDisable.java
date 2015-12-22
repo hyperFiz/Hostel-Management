@@ -5,12 +5,9 @@
  */
 package sevlet;
 
-import Model.Block;
 import database.DB;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -20,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author user
  */
-public class BlockList extends HttpServlet {
+public class RoomDisable extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,37 +32,28 @@ public class BlockList extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-
+            /* TODO output your page here. You may use following sample code. */
+            
             DB db = new DB();
-            Block block ;
-            ArrayList blockList = new ArrayList();
-
-            if(db.connect()){
-                if(db.query("SELECT * FROM room INNER JOIN block ON room.blockID=block.blockID INNER JOIN kolej ON block.kolejID=kolej.kolejID")){
-                    
-                    for(int i =0; i<db.getNumberOfRows();i++)
-                        {
-                            block = new Block();
-                            block.setBlockID(Integer.parseInt(db.getDataAt(i,"blockID")));
-                            block.setRoomID(Integer.parseInt(db.getDataAt(i, "roomID")));
-                            block.setKolejName(db.getDataAt(i, "kolejName"));
-                            block.setBlockName(db.getDataAt(i, "blockName"));
-                            block.setRoomNo(Integer.parseInt(db.getDataAt(i, "roomNo")));
-                            block.setStudentID(Integer.parseInt(db.getDataAt(i, "studentID")));
-                            block.setRoomType(Integer.parseInt(db.getDataAt(i, "roomType")));
-                            block.setRoomStatus(Integer.parseInt(db.getDataAt(i, "roomStatus")));
-                            blockList.add(block);
-                        }
-                    
-                    request.setAttribute("blockList", blockList);
-                    
-                    RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/admin/Block.jsp");
-                    dispatcher.forward(request, response);
+            String servletPath = request.getServletPath();
+            
+            int roomID = Integer.parseInt(request.getParameter("roomID"));
+            
+            if(servletPath.equals("/RoomDisable/disable")){
+               if(db.connect()){
+                    if(db.query("update room set roomStatus='0' where roomID='"+roomID+"'")){
+                       response.sendRedirect("../BlockList");
+                    }
+                    db.close();
+                } 
+            }else if(servletPath.equals("/RoomDisable/enable")){
+                if(db.connect()){
+                    if(db.query("update room set roomStatus='1' where roomID='"+roomID+"'")){
+                        response.sendRedirect("../BlockList");
+                    }
+                    db.close();
                 }
-               
-           }else{
-               response.sendRedirect("../index.jsp");
-           }
+            }
             
         }
     }

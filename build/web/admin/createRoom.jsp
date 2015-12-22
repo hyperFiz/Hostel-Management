@@ -47,7 +47,7 @@
             
             <br><br>
             <input type="submit" value="add room">
-            <button><a href="block.jsp">Cancel</a></button>
+            <button><a href="../BlockList">Cancel</a></button>
         </form>
     </body>
 </html>
