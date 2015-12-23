@@ -42,7 +42,7 @@ public class addBlock extends HttpServlet {
             {
                 db.query("INSERT INTO block(blockName, kolejID) VALUES('"+newBlock+"', '"+kolejID+"')");
                 db.close();
-                response.sendRedirect("admin/block.jsp");
+                response.sendRedirect("BlockList");
                 
             }
         }

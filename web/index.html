@@ -22,32 +22,43 @@ and open the template in the editor.
     </head>
     <body >
        
-            <h1 style="color: white">Hostel Management</h1>
-            <h1 >Login</h1>
+        <div class="pen-title">
+        <h1 style="color: white">Hostel Management</h1>
+        </div>
+        <div class="container">
+          <div class="card"></div>
+          <div class="card">
+            <h1 class="title">Login</h1>
             <form role="form" method="post" action="./LoginVerification">
-              <div >
+              <div class="input-container">
                 <input type="text" name="username" id="Username" required="required"/>
                 <label for="Username">Username</label>
-                <div></div>
+                <div class="bar"></div>
               </div>
-              <div >
+              <div class="input-container">
                 <input type="password" name="password" id="Password" required="required"/>
                 <label for="Password">Password</label>
-                <div></div>
+                <div class="bar"></div>
               </div>
               <div class="button-container">
                 <button><span>Go</span></button>
               </div>
             </form>
+            <div class="button-container">
+                <button><a href="admin/addUser.jsp"><span>Register</span></a></button>
+              </div>
+          </div>
           <div class="card alt">
-            <div class="toggle"></div>
+            <div class="toggle">
             <h1 class="title">How to Login?</h1>
             <div class="input-container">
                 <h4>Username: your Acid ID</h4><br>
                 <h4>Password: your matric card no.</h4>
             </div>
+            </div>
            
           </div>
+           
              <div class="bg-boxes">
                         <svg width="300px" height="100%" id="col1">
               <rect width="150px" height="150px" x="75px" y="75px" class="bubble" id="bub1" />
@@ -83,7 +94,8 @@ and open the template in the editor.
                 <rect width="50px" height="50px" x="25px" y="25px" class="bubble" id="bub11" />
             </svg>
           </div>
-            
+                    </div>
+
         
     </body>
 </html>

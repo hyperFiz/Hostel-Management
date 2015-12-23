@@ -25,13 +25,14 @@
   <main class="content">
     <div class="content_inner">
         
-        <%
+       <%
         String UserSession = (String)session.getAttribute("userID");
         if(UserSession==null)
         {
-            response.sendRedirect("../index.html");
+            response.sendRedirect("/HostelManagement/index.html");
         }
-        %>
+    
+    %>
         <h1>Edit Block</h1>
         <form action="BlockEdit/edit">
             <c:forEach items="${blockList}" var="block">

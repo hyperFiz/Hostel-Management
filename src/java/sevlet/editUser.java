@@ -5,21 +5,23 @@
  */
 package sevlet;
 
+import Model.Userdata;
 import database.DB;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author on
+ * @author user
  */
-@WebServlet(name = "createKolej", urlPatterns = {"/createKolej"})
-public class createKolej extends HttpServlet {
+public class editUser extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,16 +37,51 @@ public class createKolej extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            String newKolej=request.getParameter("kolejName");
+          
+            HttpSession session = request.getSession();
             DB db = new DB();
-            if(db.connect())
-            {
-                db.query("INSERT INTO kolej(kolejName) VALUES('"+newKolej+"')");
-                System.out.println("da");
-                db.close();
-                response.sendRedirect("BlockList");
+            Userdata user;
+            ArrayList udList = new ArrayList();
+            
+            String userID = session.getAttribute("userID").toString();
+            String servletPath = request.getServletPath();
+            String url = "/studentHome";
+            out.println(servletPath);
+
+                if(servletPath.equals("/editUser")){
+                    if(db.connect()){
+                        if(db.query("Select * from userdata where id='"+userID+"'")){
+                    
+                          user = new Userdata();
+                          user.setFullName(db.getDataAt(0, "fullName"));
+                          user.setId(Integer.parseInt(userID));
+                          user.setUsername(db.getDataAt(0, "username"));
+                          udList.add(user);
+
+                          request.setAttribute("udList", udList);
+
+                          url = "/student/editUser.jsp";
+                          
+                          RequestDispatcher dispatch = getServletContext().getRequestDispatcher(url);
+                dispatch.forward(request, response);
+                        } 
+                        db.close();
+                    }
+                }else if(servletPath.contains("/editUser/edit")){
+                    
+                    String password = request.getParameter("password");
+                    String fullName = request.getParameter("fullName");
+                    
+                    if(db.connect()){
+                        if(db.query("update userdata set password='"+password+"',fullName='"+fullName+"' where id='"+userID+"'")){
+                            db.close();
+                            response.sendRedirect("../studentHome");    
+                        } 
+                    }
+                }
                 
-            }
+                
+            
         }
     }
 

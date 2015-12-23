@@ -9,10 +9,19 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Create College</title>
          <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
    
+           <%
+        String UserSession = (String)session.getAttribute("userID");
+        if(UserSession==null)
+        {
+            response.sendRedirect("/HostelManagement/index.html");
+        }
+    
+    %>
+        
     </head>
     <body>
           <div class="page">
@@ -30,7 +39,7 @@
         
         <form method="get" action="../createKolej">
         College Name :
-            <input type="text" placeholder="Enter College Name" name="kolejName">
+            <input type="text" placeholder="Enter College Name" name="kolejName" required="required">
             <br><br>
             
             <input class="btn btn-success" type="submit" value="Create College">

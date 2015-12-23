@@ -18,10 +18,10 @@
         String UserSession = (String)session.getAttribute("userID");
         if(UserSession==null)
         {
-            response.sendRedirect("../index.html");
+            response.sendRedirect("/HostelManagement/index.html");
         }
-
-%>
+    
+    %>
     <body>
         <div class="page">
             <span class="menu_toggle">
@@ -30,6 +30,7 @@
             </span>
             <ul class="menu_items">
               <li><a href="Logout"><i class="icon fa fa-sign-out fa-2x"></i>Logout</a></li>
+              <li><a href="editUser"><i class="icon fa fa-archive fa-2x"></i>Edit Profile</a></li>
             </ul>
                 <main class="content">
                   <div class="content_inner">
@@ -123,10 +124,12 @@
                         </div>
                 </c:when>
                 <c:otherwise>
-                    <form method="get" action="../ApplyRoom">
+                    <c:forEach items="${roomList}" var="room">
+                        <c:if test="${room.kolejID == student.kolejID}">
+                    <form method="get" action="ApplyRoom">
                             <div class="panel panel-info">
-                              <div class="panel-heading">
-                                <h3 class="panel-title">Apply Room</h3>
+                              <div style="background-color: #F37272;" class="panel-heading">
+                                <h3 style="color: #FFFFFF;" class="panel-title"><c:out value="${student.kolejName}"/></h3>
                               </div>
                               <div class="panel-body">
                                 <div class="row">
@@ -135,14 +138,13 @@
                                             <tbody>
                                                 <tr>
                                                     <td>
-                                                      <label>Kolej</label>
+                                                      <label>Room Available</label>
                                                     </td>
-                                                  <td>:
-                                                       <select name="kolejID" >
-                                                       
-                                                           <option value="<c:out value="${student.kolejID}"/>"><c:out value="${student.kolejName}"/></option>
-
-                                                      </select>
+                                                    <td>:
+                                         
+                                                        <c:out value="${room.available}"/> /<c:out value="${room.all}"/>
+                    
+                                                       <input type="hidden" name="kolejID" value="<c:out value="${student.kolejID}"/>"/>
                                                   </td>
                                                 </tr>
                                                 <tr>
@@ -163,10 +165,12 @@
                               </div>
                                   <div class="panel-footer" align="center">
                                       <input type="hidden" name="userID" value="<%=UserSession%>">
-                                      <input type="submit" value="Apply" class="btn bg-primary">
+                                      <input type="submit" value="Apply" <c:if test="${room.available==0}">disabled="disabled"</c:if> class="btn btn-success">
                                   </div>
                             </div>
                         </form>
+                        </c:if>
+                    </c:forEach>              
                 </c:otherwise>
             </c:choose>
         </c:forEach>

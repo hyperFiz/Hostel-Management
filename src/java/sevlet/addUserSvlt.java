@@ -9,17 +9,15 @@ import database.DB;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author on
+ * @author user
  */
-@WebServlet(name = "createKolej", urlPatterns = {"/createKolej"})
-public class createKolej extends HttpServlet {
+public class addUserSvlt extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,16 +33,22 @@ public class createKolej extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            String newKolej=request.getParameter("kolejName");
+           
+            int userType = Integer.parseInt(request.getParameter("userType"));
+            String name = request.getParameter("Name");
+            String username = request.getParameter("userName");
+            String password = request.getParameter("password");
+            
             DB db = new DB();
-            if(db.connect())
-            {
-                db.query("INSERT INTO kolej(kolejName) VALUES('"+newKolej+"')");
-                System.out.println("da");
+                            System.out.println("inside add user");
+
+            if(db.connect()){
+                System.out.println("inside add user");
+                if(db.query("INSERT INTO userdata ( `username`, `password`, `userType`, `fullName`) VALUES ( '"+username+"', '"+password+"', '"+userType+"', '"+name+"')")){
+                    response.sendRedirect("/HostelManagement/index.html");
+                }
                 db.close();
-                response.sendRedirect("BlockList");
-                
-            }
+            }   
         }
     }
 

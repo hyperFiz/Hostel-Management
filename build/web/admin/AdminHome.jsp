@@ -29,7 +29,7 @@
         String UserSession = (String)session.getAttribute("userID");
         if(UserSession==null)
         {
-            response.sendRedirect("../index.html");
+            response.sendRedirect("/HostelManagement/index.html");
         }
     
     %>

@@ -10,7 +10,15 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Create Room</title>
+        <%
+        String UserSession = (String)session.getAttribute("userID");
+        if(UserSession==null)
+        {
+            response.sendRedirect("/HostelManagement/index.html");
+        }
+    
+    %>
     </head>
     <body>
         <div class="page">
@@ -48,7 +56,7 @@
                 %>
             </select><br><br>
             Room Number :
-            <input type="text" placeholder="Enter Room Number" name="roomNo">
+            <input type="text" placeholder="Enter Room Number" name="roomNo" required="required">
             <br><br>
             Room Type :
             <select name="roomType">

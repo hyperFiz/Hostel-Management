@@ -26,7 +26,7 @@ public class DB{
       
       db = "//localhost:3306/hostel";  
       user = "root";
-      pwd = "abcisback";
+      pwd = "1234";
 
       driver = DRIVER_MYSQL;
       driverMgrConn = DRIVERMGRCONN_MYSQL;

@@ -6,6 +6,7 @@
 package sevlet;
 
 import Model.StudentHome;
+import Model.room;
 import database.DB;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -41,7 +42,10 @@ public class stdHomeSvlt extends HttpServlet {
         String UserSession = session.getAttribute("userID").toString();
 
         StudentHome studentHome;
+        room  room;
+        
         ArrayList stdHomeList = new ArrayList();
+        ArrayList roomList = new ArrayList();
         
         DB db = new DB();
         
@@ -70,13 +74,27 @@ public class stdHomeSvlt extends HttpServlet {
                 }else{
                         
                     db.query("SELECT * FROM kolej");
-                    for(int i=0; i<db.getNumberOfRows();i++)
+                    int rowNo = db.getNumberOfRows();
+                    for(int i=0; i<rowNo;i++)
                     {
+                        db.query("SELECT * FROM kolej");
                         studentHome = new StudentHome();
+                        room = new room();
+
                         studentHome.setKolejID(Integer.parseInt(db.getDataAt(i, "kolejID")));
+                        room.setKolejID(Integer.parseInt(db.getDataAt(i, "kolejID")));
                         studentHome.setKolejName(db.getDataAt(i, "kolejName"));
                         stdHomeList.add(studentHome);
-                    
+
+                        db.query("SELECT count(roomID) FROM room INNER JOIN block ON block.blockID=room.blockID INNER JOIN kolej ON block.kolejID=kolej.kolejID where kolejName='"+db.getDataAt(i, "kolejName")+"'");
+                        room.setAll(Integer.parseInt(db.getDataAt(0, "count(roomID)")));
+                        
+                        db.query("SELECT * FROM kolej");
+                        db.query("SELECT count(roomID) FROM room INNER JOIN block ON block.blockID=room.blockID INNER JOIN kolej ON block.kolejID=kolej.kolejID where kolejName='"+db.getDataAt(i, "kolejName")+"' and roomStatus='1' and studentID='0' ");
+                        room.setAvailable(Integer.parseInt(db.getDataAt(0, "count(roomID)")));
+                        roomList.add(room);
+                        
+                        
                     }
                     
                 }
@@ -84,7 +102,8 @@ public class stdHomeSvlt extends HttpServlet {
                 db.close();
                     
                 request.setAttribute("stdHomeList", stdHomeList);
-                
+                request.setAttribute("roomList", roomList);
+                    
                 RequestDispatcher dispatch = getServletContext().getRequestDispatcher("/student/studentHome.jsp");
                 dispatch.forward(request, response);    
                  

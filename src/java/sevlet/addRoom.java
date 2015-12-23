@@ -43,7 +43,7 @@ public class addRoom extends HttpServlet {
             {
                 db.query("INSERT INTO room(blockID, roomNo, roomType) VALUES('"+blockID+"', '"+roomNum+"', '"+roomType+"')");
                 db.close();
-                response.sendRedirect("admin/block.jsp");
+                response.sendRedirect("BlockList");
                 
             }
         }

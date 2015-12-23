@@ -54,7 +54,7 @@ public class ApplyRoom extends HttpServlet {
                 {
                     db.query("INSERT INTO request(studentID, kolejReqID, roomType) VALUES('"+userID+"', '"+kolejID+"', '"+roomType+"') ");
                     db.close();
-                    response.sendRedirect("student/studentHome.jsp");
+                    response.sendRedirect("studentHome");
                 }
                 db.close();
             }

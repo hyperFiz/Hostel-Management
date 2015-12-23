@@ -29,8 +29,9 @@
         String UserSession = (String)session.getAttribute("userID");
         if(UserSession==null)
         {
-            response.sendRedirect("../index.html");
+            response.sendRedirect("/HostelManagement/index.html");
         }
+    
     %>
     <body>
         <div class="page">
@@ -43,6 +44,7 @@
               <li><a href="admin/createCollege.jsp"><i class="icon fa fa-plus fa-2x"></i>Create New <br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbspCollege</a></li>
               <li><a href="createBlock"><i class="icon fa fa-plus fa-2x"></i>Create New<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbspBlock</a></li>
               <li><a href="admin/createRoom.jsp"><i class="icon fa fa-plus fa-2x"></i>Insert Room</a></li>
+              <li><a href="admin/addUser.jsp"><i class="icon fa fa-plus fa-2x"></i>Add User</a></li>
             </ul>
                 <main class="content">
                   <div class="content_inner">

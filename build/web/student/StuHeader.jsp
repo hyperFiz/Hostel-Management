@@ -20,7 +20,14 @@
         
     </script>
   </head>
-
+<%
+        String UserSession = (String)session.getAttribute("userID");
+        if(UserSession==null)
+        {
+            response.sendRedirect("/HostelManagement/index.html");
+        }
+    
+    %>
   <body>
 
     <!-- Fixed navbar -->

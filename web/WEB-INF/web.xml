@@ -36,6 +36,18 @@
         <servlet-name>NotApprove</servlet-name>
         <servlet-class>sevlet.NotApprove</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>addUserSvlt</servlet-name>
+        <servlet-class>sevlet.addUserSvlt</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>NewServlet</servlet-name>
+        <servlet-class>sevlet.NewServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>editUser</servlet-name>
+        <servlet-class>sevlet.editUser</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>StudentHome</servlet-name>
         <url-pattern>/studentHome</url-pattern>
@@ -73,6 +85,19 @@
     <servlet-mapping>
         <servlet-name>NotApprove</servlet-name>
         <url-pattern>/NotApprove</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>addUserSvlt</servlet-name>
+        <url-pattern>/addUserSvlt</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>NewServlet</servlet-name>
+        <url-pattern>/NewServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>editUser</servlet-name>
+        <url-pattern>/editUser</url-pattern>
+        <url-pattern>/editUser/edit</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
